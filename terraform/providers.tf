@@ -1,7 +1,6 @@
 ####### AWS #######
 
 provider "aws" {
-  shared_credentials_files = ["/home/simon/.aws/credentials"]
   region                   = var.my_region
 }
 
