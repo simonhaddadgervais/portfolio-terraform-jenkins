@@ -1,5 +1,8 @@
 name: test build deploy
-on: push
+on:
+  push:
+    branches:
+      - '!main'
 
 jobs:
   test:
@@ -100,6 +103,7 @@ jobs:
           SOURCE_DIR: resume-site
 
   merge-to-master:
+    name: Merge the current branch to master
     runs-on: ubuntu-latest
     needs: deploy-site
     steps:
@@ -110,4 +114,5 @@ jobs:
           with:
             type: now
             target_branch: master
+            message: Merge to master
             github_token: ${{ secrets.GITHUB_TOKEN }}
