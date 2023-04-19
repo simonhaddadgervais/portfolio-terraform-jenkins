@@ -1,8 +1,5 @@
 name: test build deploy
-on:
-  push:
-    branches:
-      - '!main'
+on: push
 
 jobs:
   test:
