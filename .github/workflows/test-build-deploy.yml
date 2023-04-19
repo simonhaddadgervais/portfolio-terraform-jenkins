@@ -50,7 +50,7 @@ jobs:
             terraform apply -auto-approve
 
   build-and-push:
-    name: Build and Push to ECR
+    name: Build and Push image to ECR
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -84,7 +84,7 @@ jobs:
 
   deploy-site:
     runs-on: ubuntu-latest
-    needs: terraform
+    needs: build-and-push
     steps:
       - uses: actions/checkout@v2
       - uses: jakejarvis/s3-sync-action@master
@@ -95,3 +95,15 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           SOURCE_DIR: resume-site
+
+  merge-to-master:
+    runs-on: ubuntu-latest
+    steps:
+        - uses: actions/checkout@master
+
+        - name: Merge development -> staging
+          uses: devmasx/merge-branch@master
+          with:
+            type: now
+            target_branch: master
+            github_token: ${{ secrets.GITHUB_TOKEN }}
