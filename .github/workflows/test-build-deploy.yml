@@ -98,12 +98,12 @@ jobs:
 
   merge-to-master:
     runs-on: ubuntu-latest
-    if: ${{ github.ref != 'refs/heads/master' }}
-    needs: deploy-site
     steps:
-      - name: Merge to master
-        uses: pullreminders/merge-action@v1
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          merge_method: merge
-          merge_branch: master
+        - uses: actions/checkout@master
+
+        - name: Merge development -> staging
+          uses: devmasx/merge-branch@master
+          with:
+            type: now
+            target_branch: master
+            github_token: ${{ secrets.GITHUB_TOKEN }}
