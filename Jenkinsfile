@@ -5,7 +5,7 @@ pipeline {
         stage('Test') {
             steps {
                 sh '''
-                cd visitors_count'
+                cd visitors_count
                 pip install -r requirements.txt
                 pytest'''
                 }
