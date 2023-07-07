@@ -1,7 +1,7 @@
 
 
 resource "aws_instance" "jenkins" {
-  ami = "ami-06b09bfacae1453cb"
+  ami = "ami-01bbe8d061400c341"
 
   instance_type = "t2.micro"
 
@@ -30,6 +30,13 @@ resource "aws_security_group" "jenkins_sg" {
     to_port     = 22
     protocol    = "tcp"
     cidr_blocks = ["89.64.67.87/32"]
+  }
+
+  ingress {
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
    egress {
