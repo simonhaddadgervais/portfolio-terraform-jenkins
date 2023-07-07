@@ -7,7 +7,7 @@ pipeline {
                 sh '''
                 cd visitors_count
                 pip install -r requirements.txt
-                pytest'''
+                python3 -m pytest'''
                 }
             }
         }
