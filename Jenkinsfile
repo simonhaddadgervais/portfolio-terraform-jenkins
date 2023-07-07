@@ -4,8 +4,10 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                sh 'pip install -r requirements.txt'
-                sh 'pytest'
+                sh '''
+                cd visitors_count'
+                pip install -r requirements.txt
+                pytest'''
                 }
             }
         }
