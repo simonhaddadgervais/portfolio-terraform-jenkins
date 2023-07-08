@@ -4,14 +4,14 @@ provider "aws" {
 }
 
 ####### DOCKER VERSION #######
-terraform {
-  required_providers {
-    docker = {
-      source  = "kreuzwerker/docker"
-      version = "2.15.0"
-    }
-  }
-}
+#terraform {
+#  required_providers {
+#    docker = {
+#      source  = "kreuzwerker/docker"
+#      version = "2.15.0"
+#    }
+#  }
+#}
 
 ###### DOCKER WITH ECR #######
 data "aws_ecr_authorization_token" "token" {}
