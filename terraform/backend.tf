@@ -34,11 +34,11 @@ resource "aws_ecr_repository" "repo" {
 #}
 
 # Reference the image
-#data "aws_ecr_image" "ecr_image" {
-#  depends_on      = [docker_registry_image.repo]
-#  repository_name = aws_ecr_repository.repo.name
-#  image_tag       = "latest"
-#}
+data "aws_ecr_image" "ecr_image" {
+  depends_on      = [docker_registry_image.repo]
+  repository_name = aws_ecr_repository.repo.name
+  image_tag       = "latest"
+}
 
 
 #################################
