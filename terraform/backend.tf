@@ -24,14 +24,9 @@ resource "aws_ecr_repository" "repo" {
 }
 
 # Build docker images and push to ECR
-#resource "docker_registry_image" "repo" {
-#  name = "${aws_ecr_repository.repo.repository_url}:latest"
-#
-#  build {
-#    context    = "../visitors_count"
-#    dockerfile = "Dockerfile"
-#  }
-#}
+resource "docker_registry_image" "repo" {
+  name = "${aws_ecr_repository.repo.repository_url}:latest"
+}
 
 # Reference the image
 data "aws_ecr_image" "ecr_image" {
