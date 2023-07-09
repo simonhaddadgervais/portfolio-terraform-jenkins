@@ -25,14 +25,4 @@ def visitors_count(event, context):
     body = {"visitors": str(response['Item']['visitors'])}
 
     # Return a json response with the count in body
-    return {
-        "statusCode": 200,
-        "headers": {
-            "Access-Control-Allow-Origin": "*",
-            "Content-Type": "application/json"
-        },
-        "body": json.dumps(body)
-    }
-
-
-print("test")
+    return print("test")
