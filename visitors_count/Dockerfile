@@ -7,6 +7,8 @@ RUN  pip3 install -r requirements.txt --target "${LAMBDA_TASK_ROOT}"
 # Copy function code
 COPY app.py ${LAMBDA_TASK_ROOT}
 
+RUN echo "test"
+
 # Granting right to execute the function
 RUN  chmod 755 app.py
 
