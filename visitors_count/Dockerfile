@@ -1,16 +1,14 @@
-FROM public.ecr.aws/lambda/python:3.9
+FROM python:3.9
 
 # Install the function's dependencies using file requirements.txt
 COPY requirements.txt  .
-RUN  pip3 install -r requirements.txt --target "${LAMBDA_TASK_ROOT}"
+RUN  pip3 install -r requirements.txt
 
 # Copy function code
-COPY app.py ${LAMBDA_TASK_ROOT}
+COPY app.py .
 
-RUN echo "test"
-
-# Granting right to execute the function
 RUN  chmod 755 app.py
 
 # Set the CMD to the handler
-CMD [ "app.visitors_count" ]
+CMD ["python", "-c", "from app import visitors_count; visitors_count()"]
+
