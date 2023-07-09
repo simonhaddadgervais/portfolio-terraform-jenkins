@@ -27,10 +27,10 @@ resource "aws_ecr_repository" "repo" {
 resource "docker_registry_image" "repo" {
   name = "${aws_ecr_repository.repo.repository_url}:latest"
 
-#  build {
-#    context    = "../visitors_count"
-#    dockerfile = "Dockerfile"
-#  }
+  build {
+    context    = "../visitors_count"
+    dockerfile = "Dockerfile"
+  }
 }
 
 # Reference the image
