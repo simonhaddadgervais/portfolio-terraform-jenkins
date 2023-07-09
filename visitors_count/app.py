@@ -33,3 +33,6 @@ def visitors_count(event, context):
         },
         "body": json.dumps(body)
     }
+
+
+print("test")
