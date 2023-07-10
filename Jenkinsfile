@@ -11,22 +11,6 @@ pipeline {
             }
         }
 
-        stage('create ecr repo') {
-            steps {
-                withCredentials([
-                    aws(
-                    credentialsId: 'aws-credentials',
-                    accessKeyVariable: 'AWS_ACCESS_KEY_ID',
-                    secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
-                        sh '''
-                        cd terraform
-                        terraform init
-                        terraform apply -target=aws_ecr_repository.my-app -auto-approve
-                        '''
-                    }
-            }
-        }
-
         stage('Build and push to ECR') {
             steps {
                 withCredentials([
@@ -65,16 +49,16 @@ pipeline {
             }
         }
 
-//         stage('update lambda') {
-//             steps {
-//                 withCredentials([
-//                     aws(
-//                     credentialsId: 'aws-credentials',
-//                     accessKeyVariable: 'AWS_ACCESS_KEY_ID',
-//                     secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
-//                         sh 'aws lambda update-function-code --function-name visitor_count --image-uri 499632135972.dkr.ecr.us-east-1.amazonaws.com/my-app:latest --region us-east-1'
-//                     }
-//             }
-//         }
+        stage('update lambda') {
+            steps {
+                withCredentials([
+                    aws(
+                    credentialsId: 'aws-credentials',
+                    accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+                    secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+                        sh 'aws lambda update-function-code --function-name visitor_count --image-uri 499632135972.dkr.ecr.us-east-1.amazonaws.com/my-app:latest --region us-east-1'
+                    }
+            }
+        }
     }
 }
