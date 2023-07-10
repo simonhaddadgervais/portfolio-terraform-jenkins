@@ -34,33 +34,17 @@ pipeline {
             }
         }
 
-//         stage('Build and push to ECR') {
+//         stage('update lambda') {
 //             steps {
 //                 withCredentials([
 //                     aws(
 //                     credentialsId: 'aws-credentials',
 //                     accessKeyVariable: 'AWS_ACCESS_KEY_ID',
 //                     secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
-//                         sh 'cd visitors_count'
-//                         sh "aws ecr get-login-password --region ${region} | docker login --username AWS --password-stdin ${repo_uri}"
-//                         sh 'docker build --no-cache -t my-app ./visitors_count'
-//                         sh "docker tag ${repo_name}:${env.tag} ${repo_uri}:${tag}"
-//                         sh "docker push ${repo_uri}:${tag}"
+//                         sh "aws lambda update-function-code --function-name visitor_count --image-uri ${repo_uri}:${tag} --region ${region}"
 //                     }
 //             }
 //         }
-
-        stage('update lambda') {
-            steps {
-                withCredentials([
-                    aws(
-                    credentialsId: 'aws-credentials',
-                    accessKeyVariable: 'AWS_ACCESS_KEY_ID',
-                    secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
-                        sh "aws lambda update-function-code --function-name visitor_count --image-uri ${repo_uri}:${tag} --region ${region}"
-                    }
-            }
-        }
 
         stage('update S3') {
             steps {
