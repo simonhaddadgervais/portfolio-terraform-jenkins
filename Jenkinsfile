@@ -56,7 +56,7 @@ pipeline {
                     credentialsId: 'aws-credentials',
                     accessKeyVariable: 'AWS_ACCESS_KEY_ID',
                     secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
-                        sh "aws lambda update-function-code --function-name visitor_count --image-uri ${repo_uri}:$tag --region ${region}"
+                        sh "aws lambda update-function-code --function-name visitor_count --image-uri ${env.repo_uri}:${env.tag} --region ${env.region}"
                     }
             }
         }
