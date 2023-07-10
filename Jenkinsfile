@@ -2,14 +2,14 @@ pipeline {
     agent any
 
     stages {
-//         stage('Test') {
-//             steps {
-//                 sh '''
-//                 cd visitors_count
-//                 pip install -r requirements.txt
-//                 python3 -m pytest'''
-//             }
-//         }
+        stage('Test') {
+            steps {
+                sh '''
+                cd visitors_count
+                pip install -r requirements.txt
+                python3 -m pytest'''
+            }
+        }
 
         stage('Terraform') {
             steps {
@@ -50,5 +50,10 @@ pipeline {
             }
         }
 
+        stage('update lambda') {
+            steps {
+                sh 'aws lambda update-function-code --function-name visitor_count --image-uri 499632135972.dkr.ecr.us-east-1.amazonaws.com/my-app --region us-east-1'
+            }
+        }
     }
 }
