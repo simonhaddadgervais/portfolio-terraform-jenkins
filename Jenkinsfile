@@ -28,24 +28,23 @@ pipeline {
         }
 
         stage('Build and push to ECR') {
+            environment {
+                region = "us-east-1"
+                repo_name="my-app"
+                tag="latest"
+                repo_uri = "499632135972.dkr.ecr.us-east-1.amazonaws.com/${repo_name}"
+            }
             steps {
                 withCredentials([
                     aws(
                     credentialsId: 'aws-credentials',
                     accessKeyVariable: 'AWS_ACCESS_KEY_ID',
                     secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
-                        script {
-                        def region = "us-east-1"
-                        def repo_name="my-app"
-                        def tag="latest"
-                        def repo_uri = "499632135972.dkr.ecr.us-east-1.amazonaws.com/${repo_name}"
-
                         sh 'cd visitors_count'
                         sh "aws ecr get-login-password --region ${region} | docker login --username AWS --password-stdin ${repo_uri}"
                         sh 'docker build --no-cache -t my-app ./visitors_count'
                         sh "docker tag ${repo_name}:$tag ${repo_uri}:$tag"
                         sh "docker push ${repo_uri}:$tag"
-                        }
                     }
             }
         }
