@@ -27,8 +27,6 @@ pipeline {
             }
         }
 
-<<<<<<< HEAD
-=======
         stage('Build and push to ECR') {
             steps {
                 withCredentials([
