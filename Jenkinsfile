@@ -43,7 +43,7 @@ pipeline {
                         sh 'cd visitors_count'
                         sh "aws ecr get-login-password --region ${region} | docker login --username AWS --password-stdin ${repo_uri}"
                         sh 'docker build --no-cache -t my-app ./visitors_count'
-                        sh 'docker tag my-app:latest 499632135972.dkr.ecr.us-east-1.amazonaws.com/my-app:latest'
+                        sh 'docker tag ${repo_name}:latest 499632135972.dkr.ecr.us-east-1.amazonaws.com/my-app:latest'
                         sh "docker push ${repo_uri}:$tag"
                         }
                     }
