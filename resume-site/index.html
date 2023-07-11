@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="keywords" content="​Hello!, ​Kalvin Piterson, My Portfolio, Testimonials, ​IT Solution Strategy Development, ​My Experties, Nam ultrices ultrices nec tortor pulvinar esteras loremips est orem., Follow us, Contact Me">
     <meta name="description" content="">
-    <title>Home</title>
+    <title>Simon | Portfolio</title>
     <link rel="stylesheet" href="style.css" media="screen">
 <link rel="stylesheet" href="index.css" media="screen">
     <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
@@ -241,21 +241,17 @@
         </p>
       </div>
     </section>
-    
+    <script>
+        fetch('https://s49ci2jxd9.execute-api.us-east-1.amazonaws.com/Prod/visitors_count')
+            .then(response => response.json())
+            .then((data) => {
+                document.getElementById('visitors').innerText = data.visitors
+            })
+    </script>
     
     <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-68bd"><div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
         <p class="u-custom-font u-font-georgia u-text u-text-default u-text-1">Visitors :</p>
       </div></footer>
-    <section class="u-backlink u-clearfix u-grey-80">
-      <a class="u-link" href="https://nicepage.com/website-templates" target="_blank">
-        <span>Website Templates</span>
-      </a>
-      <p class="u-text">
-        <span>created with</span>
-      </p>
-      <a class="u-link" href="https://nicepage.site" target="_blank">
-        <span>Best Website Builder</span>
-      </a>. 
-    </section>
+
   
 </body></html>
