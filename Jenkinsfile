@@ -1,14 +1,6 @@
 pipeline {
     agent any
 
-    environment {
-    account = "499632135972"
-    region = "us-east-1"
-    repo_name = "my-app"
-    tag = "latest"
-    repo_uri = "${account}.dkr.ecr.us-east-1.amazonaws.com/${repo_name}"
-    }
-
     stages {
         stage('Test') {
             steps {
