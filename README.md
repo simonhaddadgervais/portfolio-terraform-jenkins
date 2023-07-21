@@ -20,6 +20,7 @@
 - ACM
 - Route53
 - Cloudfront
+- ECR
 
 #### Programing Languages:
 - Python
@@ -31,6 +32,7 @@
 - Terraform as Iac
 - Linux
 - Jenkins for CI/CD
+- Docker to containerize the function
 
 
 
