@@ -165,14 +165,14 @@
         <div class="u-expanded-width u-list u-list-1">
           <div class="u-repeater u-repeater-1"></div>
         </div>
-        <p class="u-align-left u-text u-text-3">The purpose of this project was to get myself used to set-up a production grade webserver, on Linux, running one or multiple WordPress applications. I manually deployed and configured that infrastructure many times, on Linux, until I was familiarized enough with the process and then, I scripted all the deployment.</p>
+        <p class="u-align-left u-text u-text-3">The purpose of this project was to get myself used to set-up a production grade webserver, on Linux, running one or multiple WordPress applications. I manually deployed and configured that infrastructure many times, on Linux, until I was familiarized enough with the process and then, I scripted all the deployment. Finally, I deployed everything using Ansible, leveraging its power and its simplicity.</p>
         <ul class="u-align-left u-text u-text-4">
-          <li> Hosted on Linux EC2 instance.</li>
+          <li>Hosted on Linux EC2 instance.</li>
           <li>SSH for remote configuration. </li>
           <li>Configured Nginx, PHP, Wordpress, MySQL.</li>
           <li>Monitored with Monit. </li>
-          <li>Scheduled back-ups with Cron for system files and MySQL. </li>
-          <li>Bash script the process for fast deployment&nbsp;</li>
+          <li>Used Ansible on a separate server for IaC deployment. </li>
+          <li>Alternatively, there is a Bash script version of the deployment&nbsp;</li>
         </ul>
         <img class="u-expanded-width-xs u-image u-image-contain u-image-default u-image-1" src="images/wordpressproject.png" alt="" data-image-width="1152" data-image-height="708">
       </div>
